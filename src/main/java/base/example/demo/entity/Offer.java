@@ -12,13 +12,13 @@ public class Offer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false) //, nullable = false
-    private Integer id;
+    private Long id;
 
     @Column(name="sumOfCredit")
-    private int sum;
+    private Long sum;
 
     @Column(name="percentOfCredit")
-    private int percent;
+    private Long percent;
 
     @Column(name="created")
     private Date created;
@@ -35,19 +35,19 @@ public class Offer {
         this.created = created;
     }
 
-    public void setSum(int sum) {
+    public void setSum(Long sum) {
         this.sum = sum;
     }
 
-    public void setPercent(int percent) {
+    public void setPercent(Long percent) {
         this.percent = percent;
     }
 
-    public int getSum() {
+    public Long getSum() {
         return sum;
     }
 
-    public int getPercent() {
+    public Long getPercent() {
         return percent;
     }
 }

@@ -12,7 +12,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false) //, nullable = false
-    private Integer id;
+    private Long id;
 
     @Column(name = "fio")
     private String name;
@@ -21,10 +21,10 @@ public class Customer {
     private String email;
 
     @Column(name = "phone")
-    private int phone;
+    private Long phone;
 
     @Column(name = "pass")
-    private int pass;
+    private Long pass;
 
     @Column(name = "created")
     private Date created;
@@ -68,11 +68,11 @@ public class Customer {
         this.email = email;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(Long phone) {
         this.phone = phone;
     }
 
-    public void setPass(int pass) {
+    public void setPass(Long pass) {
         this.pass = pass;
     }
 
@@ -84,11 +84,11 @@ public class Customer {
         return email;
     }
 
-    public int getPhone() {
+    public Long getPhone() {
         return phone;
     }
 
-    public int getPass() {
+    public Long getPass() {
         return pass;
     }
 

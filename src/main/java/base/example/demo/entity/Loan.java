@@ -1,102 +1,81 @@
 package base.example.demo.entity;
 
-import base.example.demo.paymentHisorya.PaymentHistory;
+
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-//@Entity
-//@Table
-//public class Loan {
-//
-//    //TODO передавать только 2 айдишника кустоер и оффер
-//
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long id;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "customer_id", nullable = false)
-//    private Customer customer;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "offer_id", nullable = false)
-//    private Offer offer;
-//
-//    @OneToMany(mappedBy = "loan", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<PaymentHistory> paymentHistoryList = new ArrayList<>();
-//
-//    //TODO график платежей набор строк это еще таблица с 1 то мени
-//
-//    private double loanAmount;
-//    private double annualInterestRate;
-//    private int loanTermMonths;
-//    private double monthlyPayment;
-//    private double totalInterest;
-//    private double totalPayment;
-//
-//    public Customer getCustomer() {
-//        return customer;
-//    }
-//
-//    public void setCustomer(Customer customer) {
-//        this.customer = customer;
-//    }
-//
-//    public Offer getOffer() {
-//        return offer;
-//    }
-//
-//    public void setOffer(Offer offer) {
-//        this.offer = offer;
-//    }
-//
-//    public double getLoanAmount() {
-//        return loanAmount;
-//    }
-//
-//    public void setLoanAmount(double loanAmount) {
-//        this.loanAmount = loanAmount;
-//    }
-//
-//    public double getAnnualInterestRate() {
-//        return annualInterestRate;
-//    }
-//
-//    public void setAnnualInterestRate(double annualInterestRate) {
-//        this.annualInterestRate = annualInterestRate;
-//    }
-//
-//    public int getLoanTermMonths() {
-//        return loanTermMonths;
-//    }
-//
-//    public void setLoanTermMonths(int loanTermMonths) {
-//        this.loanTermMonths = loanTermMonths;
-//    }
-//
-//    public double getMonthlyPayment() {
-//        return monthlyPayment;
-//    }
-//
-//    public void setMonthlyPayment(double monthlyPayment) {
-//        this.monthlyPayment = monthlyPayment;
-//    }
-//
-//    public double getTotalInterest() {
-//        return totalInterest;
-//    }
-//
-//    public void setTotalInterest(double totalInterest) {
-//        this.totalInterest = totalInterest;
-//    }
-//
-//    public double getTotalPayment() {
-//        return totalPayment;
-//    }
-//
-//    public void setTotalPayment(double totalPayment) {
-//        this.totalPayment = totalPayment;
-//    }
-//}
+import jakarta.persistence.*;
+import java.util.List;
+
+@Entity
+@Table(name = "loan")
+public class Loan {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    private Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name = "offer_id", referencedColumnName = "id")
+    private Offer offer;
+
+    private Double totalAmount; // Общая сумма кредита (с учетом процентов)
+    private Double monthlyPayment; // Ежемесячный платёж должно быть количество месяцев
+    private Long mouth;
+
+    @OneToMany(mappedBy = "loan", cascade = CascadeType.ALL)
+    private List<PaymentHistory> paymentHistory;
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public void setOffer(Offer offer) {
+        this.offer = offer;
+    }
+
+    public void setTotalAmount(Double totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
+    public void setMonthlyPayment(Double monthlyPayment) {
+        this.monthlyPayment = monthlyPayment;
+    }
+
+    public void setPaymentHistory(List<PaymentHistory> paymentHistory) {
+        this.paymentHistory = paymentHistory;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public Long getMouth() {
+        return mouth;
+    }
+
+    public void setMouth(Long mouth) {
+        this.mouth = mouth;
+    }
+
+    public Offer getOffer() {
+        return offer;
+    }
+
+    public Double getTotalAmount() {
+        return totalAmount;
+    }
+
+    public Double getMonthlyPayment() {
+        return monthlyPayment;
+    }
+
+    public List<PaymentHistory> getPaymentHistory() {
+        return paymentHistory;
+    }
+}

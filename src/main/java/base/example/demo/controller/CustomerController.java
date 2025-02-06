@@ -42,7 +42,7 @@ public class CustomerController {
 
     // Получить клиента по ID
     @GetMapping("/{id}")
-    public ResponseEntity<CustomerDto> getCustomerById(@PathVariable Integer id) {
+    public ResponseEntity<CustomerDto> getCustomerById(@PathVariable Long id) {
 
         CustomerDto customerDto = new CustomerDto();
         Optional<Customer> customer = customerRepository.findById(id);
@@ -61,7 +61,7 @@ public class CustomerController {
 
     // Обновить клиента
     @PutMapping("/{id}")
-    public ResponseEntity<Customer> updateCustomer(@PathVariable Integer id, @RequestBody Customer customerDetails) {
+    public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @RequestBody Customer customerDetails) {
         Optional<Customer> optionalCustomer = customerRepository.findById(id);
         if (optionalCustomer.isPresent()) {
             Customer existingCustomer = optionalCustomer.get();
@@ -78,7 +78,7 @@ public class CustomerController {
 
     // Удалить клиента
     @DeleteMapping("/{id}")
-    public ResponseEntity<Customer> deleteCustomer(@PathVariable Integer id) {
+    public ResponseEntity<Customer> deleteCustomer(@PathVariable Long id) {
         Optional<Customer> optionalCustomer = customerRepository.findById(id);
         if (optionalCustomer.isPresent()) {
             Customer existingCustomer = optionalCustomer.get();
