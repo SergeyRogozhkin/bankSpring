@@ -45,7 +45,7 @@ public class CustomerControllerCreateTest {
         customerMock.setEmail("johndoe@example.com");
         customerMock.setPass(3615123456L);
         customerMock.setPhone(89191234567L);
-
+        //тестовый коммит2
         when(customerRepository.save(customerMock)).thenReturn(customerMock);
         //реальный метод репозитория не вызывается (и база данных не запрашивается). Вместо этого выполнение эмулируется.
 
