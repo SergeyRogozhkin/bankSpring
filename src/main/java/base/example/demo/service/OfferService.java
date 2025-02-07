@@ -14,7 +14,7 @@ public class OfferService {
     private final OfferRepository offerRepository;
 
     @Autowired
-    public OfferService(OfferRepository offerRepository){
+    public OfferService(OfferRepository offerRepository) {
         this.offerRepository = offerRepository;
     }
 

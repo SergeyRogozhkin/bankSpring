@@ -9,7 +9,10 @@ import base.example.demo.repository.OfferRepository;
 import base.example.demo.service.LoanService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/loan")
@@ -31,7 +34,7 @@ public class LoanController {
     }
 
 //    @PostMapping("/create")
-//    //   ResponseEntity<Customer> addCustomer(@RequestBody Customer customer) {
+//
 //    public ResponseEntity<Loan> createLoan(@RequestParam Long customerId, @RequestParam Long offerId, @RequestParam int termMonths) {
 //        Customer customer = customerRepository.findById(customerId).orElseThrow(() -> new RuntimeException("Customer not found"));
 //        Offer offer = offerRepository.findById(offerId).orElseThrow(() -> new RuntimeException("Offer not found"));
@@ -43,30 +46,21 @@ public class LoanController {
 //        return new ResponseEntity<>(loan,HttpStatus.CREATED);
 //    }
 
-    @PostMapping("/create")
-    //   ResponseEntity<Customer> addCustomer(@RequestBody Customer customer) {
-    public ResponseEntity<Loan> createLoan(@RequestParam long termMonths) {
-        Customer customer = new Customer();
-        long a =123;
-        customer.setPass(a);
-        customer.setPhone(a);
-        customer.setName("John Doe");
-        customer.setEmail("john.doe@example.com");
-        Offer offer = new Offer();
-        long b =450000;
-        long c = termMonths;
-        offer.setSum(b);
-        offer.setPercent(c);
+    @PostMapping("/create/{customerId}/{offerId}/{termMonths}")
+    public ResponseEntity<Loan> createLoan(
+            @PathVariable Long customerId,
+            @PathVariable Long offerId,
+            @PathVariable int termMonths) {
+        Customer customer = customerRepository.findById(customerId)
+                .orElseThrow(() -> new RuntimeException("Customer not found"));
+        Offer offer = offerRepository.findById(offerId)
+                .orElseThrow(() -> new RuntimeException("Offer not found"));
 
-        //Loan loan = loanService.createLoan(customer, offer, 12);
-        Loan loan = new Loan();
-//        loan.setCustomer(customer);
-//        loan.setOffer(offer);
-//        loan.setMouth(termMonths);
+        Loan loan = loanService.createLoan(customer, offer, termMonths);
         loanRepository.save(loan);
 
-        // return ResponseEntity.ok(loan);
-        return new ResponseEntity<>(loan,HttpStatus.CREATED);
+        return new ResponseEntity<>(loan, HttpStatus.CREATED);
     }
+
 
 }

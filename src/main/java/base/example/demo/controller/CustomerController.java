@@ -48,7 +48,7 @@ public class CustomerController {
         Optional<Customer> customer = customerRepository.findById(id);
         Customer customer1 = customer.get();
 
-        if (customer.isEmpty() || customer1.getArchive() == true) {
+        if (customer.isEmpty() || customer1.getArchive()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND); //404
         }
         customerDto.setName(customer1.getName());

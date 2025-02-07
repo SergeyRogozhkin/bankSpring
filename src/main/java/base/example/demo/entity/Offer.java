@@ -14,13 +14,13 @@ public class Offer {
     @Column(name = "id", unique = true, nullable = false) //, nullable = false
     private Long id;
 
-    @Column(name="sumOfCredit")
+    @Column(name = "sumOfCredit")
     private Long sum;
 
-    @Column(name="percentOfCredit")
+    @Column(name = "percentOfCredit")
     private Long percent;
 
-    @Column(name="created")
+    @Column(name = "created")
     private Date created;
 
     public Offer() {
@@ -35,19 +35,19 @@ public class Offer {
         this.created = created;
     }
 
-    public void setSum(Long sum) {
-        this.sum = sum;
-    }
-
-    public void setPercent(Long percent) {
-        this.percent = percent;
-    }
-
     public Long getSum() {
         return sum;
     }
 
+    public void setSum(Long sum) {
+        this.sum = sum;
+    }
+
     public Long getPercent() {
         return percent;
+    }
+
+    public void setPercent(Long percent) {
+        this.percent = percent;
     }
 }

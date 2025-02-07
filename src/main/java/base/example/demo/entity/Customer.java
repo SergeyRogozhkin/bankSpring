@@ -48,10 +48,6 @@ public class Customer {
         this.archive = archive;
     }
 
-    public void setUpdated(Date updated) {
-        this.updated = updated;
-    }
-
     public Date getCreated() {
         return created;
     }
@@ -60,36 +56,40 @@ public class Customer {
         return updated;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPhone(Long phone) {
-        this.phone = phone;
-    }
-
-    public void setPass(Long pass) {
-        this.pass = pass;
+    public void setUpdated(Date updated) {
+        this.updated = updated;
     }
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getEmail() {
         return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Long getPhone() {
         return phone;
     }
 
+    public void setPhone(Long phone) {
+        this.phone = phone;
+    }
+
     public Long getPass() {
         return pass;
+    }
+
+    public void setPass(Long pass) {
+        this.pass = pass;
     }
 
 }

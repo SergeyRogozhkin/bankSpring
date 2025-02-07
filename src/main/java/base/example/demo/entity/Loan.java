@@ -3,10 +3,6 @@ package base.example.demo.entity;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
@@ -26,56 +22,48 @@ public class Loan {
 
     private Double totalAmount; // Общая сумма кредита (с учетом процентов)
     private Double monthlyPayment; // Ежемесячный платёж должно быть количество месяцев
-    private Long mouth;
+
 
     @OneToMany(mappedBy = "loan", cascade = CascadeType.ALL)
     private List<PaymentHistory> paymentHistory;
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public void setOffer(Offer offer) {
-        this.offer = offer;
-    }
-
-    public void setTotalAmount(Double totalAmount) {
-        this.totalAmount = totalAmount;
-    }
-
-    public void setMonthlyPayment(Double monthlyPayment) {
-        this.monthlyPayment = monthlyPayment;
-    }
-
-    public void setPaymentHistory(List<PaymentHistory> paymentHistory) {
-        this.paymentHistory = paymentHistory;
-    }
 
     public Customer getCustomer() {
         return customer;
     }
 
-    public Long getMouth() {
-        return mouth;
-    }
-
-    public void setMouth(Long mouth) {
-        this.mouth = mouth;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public Offer getOffer() {
         return offer;
     }
 
+    public void setOffer(Offer offer) {
+        this.offer = offer;
+    }
+
     public Double getTotalAmount() {
         return totalAmount;
+    }
+
+    public void setTotalAmount(Double totalAmount) {
+        this.totalAmount = totalAmount;
     }
 
     public Double getMonthlyPayment() {
         return monthlyPayment;
     }
 
+    public void setMonthlyPayment(Double monthlyPayment) {
+        this.monthlyPayment = monthlyPayment;
+    }
+
     public List<PaymentHistory> getPaymentHistory() {
         return paymentHistory;
+    }
+
+    public void setPaymentHistory(List<PaymentHistory> paymentHistory) {
+        this.paymentHistory = paymentHistory;
     }
 }
