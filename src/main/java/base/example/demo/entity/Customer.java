@@ -40,6 +40,10 @@ public class Customer {
         archive = false;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public boolean getArchive() {
         return archive;
     }
