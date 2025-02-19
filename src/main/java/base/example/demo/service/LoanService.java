@@ -1,6 +1,6 @@
 package base.example.demo.service;
 
-import base.example.demo.entity.Customer;
+import base.example.demo.entity.CustomerEntity;
 import base.example.demo.entity.Loan;
 import base.example.demo.entity.Offer;
 import base.example.demo.entity.PaymentHistory;
@@ -17,7 +17,7 @@ public class LoanService {
     // private LoanRepository loanRepository;
 
 
-    public Loan createLoan(Customer customer, Offer offer, long loanTermMonths) {
+    public Loan createLoan(CustomerEntity customer, Offer offer, long loanTermMonths) {
         Loan loan = new Loan();
         loan.setCustomer(customer);
         loan.setOffer(offer);

@@ -1,11 +1,21 @@
 package base.example.demo.dto;
 
-import jakarta.persistence.Column;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.lang.NonNull;
 
 public class CustomerDto {
+    //как сдлетаь поля нотНал чтобы выпадала ошибка при добавлении.
+    //логика по паспорту. Сделать поле паспорта уникальным
+    //не перетирать новым пользователем с новым паспортом старый. Черезе крейт нельзя
+    //поле пасс уникальное
+
+    @NotNull(message = "Обязательное поле name")
     private String name;
+    @NotNull
     private String email;
+    @NotNull
     private Long phone;
+    @NotNull(message = "Обязательное поле pass")
     private Long pass;
 
     public CustomerDto(String name, String email, Long phone, Long pass) {

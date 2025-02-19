@@ -7,23 +7,23 @@ import java.util.Date;
 
 @Entity
 @Table(name = "customer")
-public class Customer {
+public class CustomerEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false) //, nullable = false
     private Long id;
 
-    @Column(name = "fio")
+    @Column(name = "fio", nullable = false)
     private String name;
 
-    @Column(name = "email")
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
 
-    @Column(name = "phone")
+    @Column(name = "phone", nullable = false)
     private Long phone;
 
-    @Column(name = "pass")
+    @Column(name = "pass", unique = true, nullable = false)
     private Long pass;
 
     @Column(name = "created")
@@ -35,7 +35,7 @@ public class Customer {
     @Column(name = "archive")
     private boolean archive;
 
-    public Customer() {
+    public CustomerEntity() {
         created = new Date();
         archive = false;
     }

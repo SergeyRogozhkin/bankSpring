@@ -1,9 +1,8 @@
 package base.example.demo.service;
 
-//у тебя должен быть класс OfferService
-//методы createNewOffer, updateOffer, deleteOffer
-
+import base.example.demo.dto.OfferDto;
 import base.example.demo.entity.Offer;
+import base.example.demo.mapper.OfferMapper;
 import base.example.demo.repository.OfferRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,13 +11,15 @@ import org.springframework.stereotype.Service;
 public class OfferService {
 
     private final OfferRepository offerRepository;
+    private final OfferMapper offerMapper;
 
     @Autowired
-    public OfferService(OfferRepository offerRepository) {
+    public OfferService(OfferRepository offerRepository, OfferMapper offerMapper) {
         this.offerRepository = offerRepository;
+        this.offerMapper = offerMapper;
     }
 
-    public Offer createOffer(Offer offer) {
-        return offerRepository.save(offer);
+    public OfferDto createOffer(Offer offer) {
+        return offerMapper.toDto(offerRepository.save(offer));
     }
 }
