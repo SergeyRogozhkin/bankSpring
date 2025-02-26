@@ -22,7 +22,7 @@ public class CustomerMapper {
         return customerDto;
     }
 
-    public CustomerEntity toEntity (CustomerDto customerDto){
+    public CustomerEntity toEntity(CustomerDto customerDto) {
         if (customerDto == null) {
             return null;
         }
@@ -36,7 +36,7 @@ public class CustomerMapper {
 
     public List<CustomerDto> toDtoList(List<CustomerEntity> entities) {
         return entities.stream()
-                .map(this::toDto) // Используется уже существующий метод toDto
+                .map(this::toDto)
                 .collect(Collectors.toList());
     }
 

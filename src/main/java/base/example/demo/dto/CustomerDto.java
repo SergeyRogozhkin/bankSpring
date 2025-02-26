@@ -1,14 +1,8 @@
 package base.example.demo.dto;
 
 import jakarta.validation.constraints.NotNull;
-import org.springframework.lang.NonNull;
 
 public class CustomerDto {
-    //как сдлетаь поля нотНал чтобы выпадала ошибка при добавлении.
-    //логика по паспорту. Сделать поле паспорта уникальным
-    //не перетирать новым пользователем с новым паспортом старый. Черезе крейт нельзя
-    //поле пасс уникальное
-
     @NotNull(message = "Обязательное поле name")
     private String name;
     @NotNull
@@ -24,6 +18,7 @@ public class CustomerDto {
         this.phone = phone;
         this.pass = pass;
     }
+
     public CustomerDto() {
     }
 
@@ -58,5 +53,4 @@ public class CustomerDto {
     public Long getPass() {
         return pass;
     }
-// сет гет в данном случае не нужны, тк объект передает данные в своих полях
 }

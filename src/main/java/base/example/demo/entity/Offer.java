@@ -50,4 +50,8 @@ public class Offer {
     public void setPercent(Long percent) {
         this.percent = percent;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

@@ -9,9 +9,10 @@ import java.util.List;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<CustomerEntity, Long> {
-    //  кастомный запрос на случай сложной логики
-    //запрос Апи напрямую с БД рабоатем через репозиторий
     @Query("SELECT c FROM CustomerEntity c WHERE c.archive = false")
     List<CustomerEntity> findAllNotActiveCustomers();
+
+    @Query("SELECT c FROM CustomerEntity c WHERE c.archive = false AND c.id = :id")
+    CustomerEntity findByIdNotArchive(Long id);
 
 }

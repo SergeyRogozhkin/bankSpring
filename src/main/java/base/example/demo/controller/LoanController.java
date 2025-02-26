@@ -9,10 +9,7 @@ import base.example.demo.repository.OfferRepository;
 import base.example.demo.service.LoanService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/loan")
@@ -34,13 +31,22 @@ public class LoanController {
     }
 
 
-    @PostMapping("/create/{customerId}/{offerId}/{termMonths}")
+    @PostMapping("/create")
     public ResponseEntity<Loan> createLoan(
-            @PathVariable Long customerId,
-            @PathVariable Long offerId,
-            @PathVariable int termMonths) {
+            @RequestParam Long customerId,
+            @RequestParam Long offerId,
+            @RequestParam int termMonths) {
+        if (termMonths <= 0) {
+            throw new IllegalArgumentException("Количество месяцев указать > 0.");
+        }
+
         CustomerEntity customer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new RuntimeException("Customer not found"));
+
+        if (customer.getArchive()) {
+            throw new IllegalStateException("Customer is archived and cannot create a loan.");
+        }
+
         Offer offer = offerRepository.findById(offerId)
                 .orElseThrow(() -> new RuntimeException("Offer not found"));
 

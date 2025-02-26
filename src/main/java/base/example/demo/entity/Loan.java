@@ -23,9 +23,9 @@ public class Loan {
     private Double totalAmount; // Общая сумма кредита (с учетом процентов)
     private Double monthlyPayment; // Ежемесячный платёж должно быть количество месяцев
 
-
     @OneToMany(mappedBy = "loan", cascade = CascadeType.ALL)
     private List<PaymentHistory> paymentHistory;
+
 
     public CustomerEntity getCustomer() {
         return customer;
@@ -65,5 +65,9 @@ public class Loan {
 
     public void setPaymentHistory(List<PaymentHistory> paymentHistory) {
         this.paymentHistory = paymentHistory;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

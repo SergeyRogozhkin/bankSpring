@@ -6,14 +6,15 @@ public class OfferDto {
     @NotNull(message = "Обязательное поле sum")
     private Long sum;
 
-    @NotNull(message = "Обязательное поле percentile")
-    private Long percentile;
+    @NotNull(message = "Обязательное поле percent")
+    private Long percent;
 
-    public OfferDto() {}
+    public OfferDto() {
+    }
 
     public OfferDto(Long sum, Long percentile) {
         this.sum = sum;
-        this.percentile = percentile;
+        this.percent = percentile;
     }
 
     public @NotNull(message = "Обязательное поле sum") Long getSum() {
@@ -24,12 +25,12 @@ public class OfferDto {
         this.sum = sum;
     }
 
-    public @NotNull(message = "Обязательное поле percentile") Long getPercentile() {
-        return percentile;
+    public @NotNull(message = "Обязательное поле percentile") Long getPercent() {
+        return percent;
     }
 
-    public void setPercentile(@NotNull(message = "Обязательное поле percentile") Long percentile) {
-        this.percentile = percentile;
+    public void setPercent(@NotNull(message = "Обязательное поле percentile") Long percent) {
+        this.percent = percent;
     }
 
 }

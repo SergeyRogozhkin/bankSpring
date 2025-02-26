@@ -9,13 +9,13 @@ public class OfferMapper {
    public OfferDto toDto(Offer offer) {
        OfferDto offerDto = new OfferDto();
        offerDto.setSum(offer.getSum());
-       offerDto.setPercentile(offer.getPercent());
+       offerDto.setPercent(offer.getPercent());
        return offerDto;
    }
    public Offer toEntity(OfferDto offerDto) {
        Offer offer = new Offer();
        offer.setSum(offerDto.getSum());
-       offer.setPercent(offerDto.getPercentile());
+       offer.setPercent(offerDto.getPercent());
        return offer;
    }
 

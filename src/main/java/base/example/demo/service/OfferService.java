@@ -19,7 +19,11 @@ public class OfferService {
         this.offerMapper = offerMapper;
     }
 
-    public OfferDto createOffer(Offer offer) {
-        return offerMapper.toDto(offerRepository.save(offer));
+    public OfferDto createOffer(OfferDto offerDto) {
+        Offer offerEntity = offerMapper.toEntity(offerDto);
+        Offer savedOffer = offerRepository.save(offerEntity);
+        return offerMapper.toDto(savedOffer);
+
     }
+
 }
